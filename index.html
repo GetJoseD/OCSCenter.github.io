@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Community Safety Center - City of Minneapolis</title>
+  
+  <style>
+    /* ============================================
+       CITY OF MINNEAPOLIS BRAND COLORS
+       ============================================ */
+    :root {
+      --mpls-dark-blue: #008AC0;
+      --mpls-light-blue: #00B2D5;
+      --mpls-gray: #5F6062;
+      --mpls-green: #A2B427;
+      --mpls-gray-lightest: #D5D0CA;
+      --mpls-gray-light: #ADA7A3;
+      --mpls-gray-medium: #928884;
+      --mpls-gray-dark: #7D716D;
+      --mpls-orange: #F68628;
+      --white: #ffffff;
+    }
+    
+    /* ============================================
+       RESET AND BASE STYLES
+       ============================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: rgba(0, 138, 192, 0.3);
+      -webkit-touch-callout: none;
+    }
+    
+    html {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      height: 100%;
+    }
+    
+    body {
+      font-family: 'Myriad Pro', Calibri, 'Trebuchet MS', Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--mpls-gray);
+      background-color: var(--white);
+      height: 100%;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* ============================================
+       LAYOUT
+       ============================================ */
+    .container {
+      max-width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    
+    /* ============================================
+       HEADER
+       ============================================ */
+    .header {
+      background-color: var(--mpls-dark-blue);
+      padding: 30px 40px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+    
+    .logo {
+      height: 80px;
+      width: auto;
+    }
+    
+    .header-text h1 {
+      color: var(--white);
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+    
+    .header-text p {
+      color: var(--white);
+      font-size: 18px;
+      margin: 0;
+      opacity: 0.95;
+    }
+    
+    /* ============================================
+       MAIN CONTENT
+       ============================================ */
+    .main-content {
+      flex: 1;
+      padding: 50px 40px;
+      background-color: var(--white);
+    }
+    
+    /* Welcome Section */
+    .welcome-section {
+      background-color: #f9f9f9;
+      border-left: 6px solid var(--mpls-dark-blue);
+      padding: 35px 40px;
+      margin-bottom: 50px;
+      border-radius: 6px;
+    }
+    
+    .welcome-section h2 {
+      color: var(--mpls-dark-blue);
+      font-size: 36px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .welcome-section p {
+      font-size: 22px;
+      line-height: 1.7;
+      color: var(--mpls-gray);
+      margin-bottom: 15px;
+    }
+    
+    .welcome-section .highlight {
+      background-color: #e6f5f9;
+      padding: 25px 30px;
+      border-radius: 6px;
+      margin-top: 25px;
+      border-left: 4px solid var(--mpls-light-blue);
+    }
+    
+    .welcome-section .highlight p {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--mpls-dark-blue);
+    }
+    
+    .welcome-section .highlight p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* Resource Links Section */
+    .resources-section {
+      margin-bottom: 50px;
+    }
+    
+    .section-title {
+      color: var(--mpls-dark-blue);
+      font-size: 32px;
+      margin-bottom: 30px;
+      font-weight: 600;
+      padding-bottom: 15px;
+      border-bottom: 3px solid var(--mpls-light-blue);
+    }
+    
+    .resource-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+    
+    .resource-card {
+      background-color: var(--mpls-gray);
+      color: var(--white);
+      padding: 35px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      min-height: 140px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .resource-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+    .resource-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 100%);
+      pointer-events: none;
+    }
+    
+    /* Different colored cards for visual variety */
+    .resource-card:nth-child(1) {
+      background-color: var(--mpls-dark-blue);
+    }
+    
+    .resource-card:nth-child(2) {
+      background-color: var(--mpls-gray);
+    }
+    
+    .resource-card:nth-child(3) {
+      background-color: var(--mpls-light-blue);
+    }
+    
+    .resource-card:nth-child(4) {
+      background-color: var(--mpls-green);
+    }
+    
+    .resource-card:nth-child(5) {
+      background-color: var(--mpls-orange);
+    }
+    
+    .resource-icon {
+      font-size: 60px;
+      min-width: 80px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    
+    .resource-content {
+      flex: 1;
+    }
+    
+    .resource-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    
+    .resource-description {
+      font-size: 18px;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
+    
+    .resource-arrow {
+      font-size: 40px;
+      opacity: 0.8;
+      flex-shrink: 0;
+    }
+    
+    /* ============================================
+       HELP SECTIONS
+       ============================================ */
+    .help-section {
+      background-color: #f9f9f9;
+      padding: 35px 40px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+      border-left: 6px solid var(--mpls-green);
+    }
+    
+    .help-section h3 {
+      color: var(--mpls-dark-blue);
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .help-section p,
+    .help-section li {
+      font-size: 20px;
+      line-height: 1.7;
+      color: var(--mpls-gray);
+      margin-bottom: 12px;
+    }
+    
+    .help-section ol {
+      margin-left: 25px;
+      margin-top: 15px;
+    }
+    
+    .help-section li {
+      margin-bottom: 15px;
+      padding-left: 10px;
+    }
+    
+    .help-section strong {
+      color: var(--mpls-dark-blue);
+      font-weight: 600;
+    }
+    
+    /* Accessibility Section */
+    .accessibility-section {
+      border-left-color: var(--mpls-orange);
+    }
+    
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background-color: var(--mpls-gray-dark);
+      color: var(--white);
+      padding: 40px;
+      text-align: center;
+      margin-top: auto;
+    }
+    
+    .footer-content h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .footer-content p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      opacity: 0.95;
+    }
+    
+    .footer-logo {
+      margin-top: 25px;
+      opacity: 0.8;
+    }
+    
+    .footer-logo img {
+      height: 60px;
+      filter: brightness(0) invert(1);
+      opacity: 0.7;
+    }
+    
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .resource-card {
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    .resource-card:nth-child(1) { animation-delay: 0.1s; }
+    .resource-card:nth-child(2) { animation-delay: 0.2s; }
+    .resource-card:nth-child(3) { animation-delay: 0.3s; }
+    .resource-card:nth-child(4) { animation-delay: 0.4s; }
+    .resource-card:nth-child(5) { animation-delay: 0.5s; }
+    
+    /* ============================================
+       RESPONSIVE ADJUSTMENTS
+       ============================================ */
+    @media (orientation: landscape) {
+      .resource-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header {
+        padding: 20px 25px;
+      }
+      
+      .logo {
+        height: 60px;
+      }
+      
+      .header-text h1 {
+        font-size: 26px;
+      }
+      
+      .header-text p {
+        font-size: 16px;
+      }
+      
+      .main-content {
+        padding: 30px 25px;
+      }
+      
+      .welcome-section h2 {
+        font-size: 28px;
+      }
+      
+      .welcome-section p {
+        font-size: 18px;
+      }
+      
+      .section-title {
+        font-size: 26px;
+      }
+      
+      .resource-card {
+        padding: 25px 30px;
+        min-height: 120px;
+      }
+      
+      .resource-icon {
+        font-size: 50px;
+        min-width: 70px;
+      }
+      
+      .resource-title {
+        font-size: 24px;
+      }
+      
+      .resource-description {
+        font-size: 16px;
+      }
+    }
+    
+    /* ============================================
+       PRINT STYLES
+       ============================================ */
+    @media print {
+      .header,
+      .footer {
+        background-color: var(--mpls-dark-blue) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      
+      .resource-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <img src="/files/minneapolis-logo-white.png" alt="City of Minneapolis" class="logo">
+        <div class="header-text">
+          <h1>Community Safety Center</h1>
+          <p>Lake Street Resource Kiosk</p>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      
+      <!-- Welcome Section -->
+      <section class="welcome-section">
+        <h2>Welcome! How Can We Help You Today?</h2>
+        <p>Use this kiosk to access City of Minneapolis services and community resources. Simply tap on any link below to get started.</p>
+        
+        <div class="highlight">
+          <p>📍 Need Personal Assistance?</p>
+          <p>Please speak with a service representative at the counter. They're here to help!</p>
+        </div>
+      </section>
+      
+      <!-- Resources Section -->
+      <section class="resources-section">
+        <h2 class="section-title">Community Resources</h2>
+        
+        <div class="resource-grid">
+          
+          <!-- City of Minneapolis -->
+          <a href="https://www.minneapolismn.gov/" class="resource-card" target="_blank" rel="noopener">
+            <div class="resource-icon">🏛️</div>
+            <div class="resource-content">
+              <div class="resource-title">City of Minneapolis</div>
+              <div class="resource-description">Access city services, pay bills, find information about programs and events</div>
+            </div>
+            <div class="resource-arrow">→</div>
+          </a>
+          
+          <!-- United Way 211 -->
+          <a href="https://211unitedway.org/" class="resource-card" target="_blank" rel="noopener">
+            <div class="resource-icon">🤝</div>
+            <div class="resource-content">
+              <div class="resource-title">United Way - First Call for Help</div>
+              <div class="resource-description">Find housing, food assistance, health services, and emergency support</div>
+            </div>
+            <div class="resource-arrow">→</div>
+          </a>
+          
+          <!-- United Way Twin Cities -->
+          <a href="https://www.gtcuw.org/get-assistance/211-resource-helpline/" class="resource-card" target="_blank" rel="noopener">
+            <div class="resource-icon">📞</div>
+            <div class="resource-content">
+              <div class="resource-title">211 Resource Helpline</div>
+              <div class="resource-description">Connect with local resources and community assistance programs</div>
+            </div>
+            <div class="resource-arrow">→</div>
+          </a>
+          
+          <!-- Metro Transit -->
+          <a href="https://www.metrotransit.org/home" class="resource-card" target="_blank" rel="noopener">
+            <div class="resource-icon">🚌</div>
+            <div class="resource-content">
+              <div class="resource-title">Metro Transit</div>
+              <div class="resource-description">Plan your trip, view schedules, and track buses in real-time</div>
+            </div>
+            <div class="resource-arrow">→</div>
+          </a>
+          
+          <!-- Metro Transit Store -->
+          <a href="https://store.metrotransit.org/" class="resource-card" target="_blank" rel="noopener">
+            <div class="resource-icon">🎫</div>
+            <div class="resource-content">
+              <div class="resource-title">Metro Transit Store</div>
+              <div class="resource-description">Purchase transit passes and manage your Go-To Card</div>
+            </div>
+            <div class="resource-arrow">→</div>
+          </a>
+          
+        </div>
+      </section>
+      
+      <!-- Translation Help Section -->
+      <section class="help-section">
+        <h3>🌐 Need This Page in Another Language?</h3>
+        <p>You can translate this page using Microsoft Edge's built-in translation feature:</p>
+        <ol>
+          <li>Tap the <strong>three dots (•••)</strong> in the upper right corner of the screen</li>
+          <li>Tap <strong>"Translate"</strong> from the menu</li>
+          <li>Select your preferred language from the list</li>
+          <li>The page will automatically translate</li>
+        </ol>
+        <p><strong>Common Languages:</strong> Spanish (Español), Somali (Soomaali), Hmong, Karen, Oromo, Vietnamese (Tiếng Việt)</p>
+      </section>
+      
+      <!-- Accessibility Help Section -->
+      <section class="help-section accessibility-section">
+        <h3>♿ Accessibility Options</h3>
+        <p>Make this kiosk easier to use with iPad accessibility features:</p>
+        
+        <p><strong>To Make Text Larger:</strong></p>
+        <ol>
+          <li>Triple-click the <strong>Home button</strong> (or Side button on newer iPads)</li>
+          <li>Tap <strong>"Zoom"</strong> to turn it on</li>
+          <li>Use three fingers to zoom in and out</li>
+          <li>Drag with three fingers to move around</li>
+        </ol>
+        
+        <p><strong>To Hear Text Read Aloud:</strong></p>
+        <ol>
+          <li>Swipe down with two fingers from the top of the screen</li>
+          <li>Look for <strong>"Speak Screen"</strong> or <strong>"VoiceOver"</strong></li>
+          <li>Tap any text to hear it read aloud</li>
+        </ol>
+        
+        <p><strong>For Additional Help:</strong> Please ask a service representative at the counter.</p>
+      </section>
+      
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <h3>Community Safety Center - Lake Street</h3>
+        <p>City of Minneapolis</p>
+        <p>For assistance, please speak with staff at the service counter</p>
+        <p>Emergency: Call 911</p>
+        <p>Non-Emergency: Call 311 or 612-673-3000</p>
+        
+        <div class="footer-logo">
+          <img src="/files/minneapolis-logo-white.png" alt="City of Minneapolis">
+        </div>
+      </div>
+    </footer>
+    
+  </div>
+  
+  <!-- Prevent context menu on long press -->
+  <script>
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+    
+    // Prevent text selection
+    document.addEventListener('selectstart', function(e) {
+      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+      }
+    });
+    
+    // Log link clicks (optional - for analytics)
+    document.querySelectorAll('.resource-card').forEach(function(link) {
+      link.addEventListener('click', function() {
+        console.log('Resource accessed:', this.querySelector('.resource-title').textContent);
+      });
+    });
+    
+    // Auto-refresh page after 30 minutes of inactivity (kiosk mode)
+    let inactivityTimer;
+    function resetTimer() {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(function() {
+        window.location.reload();
+      }, 1800000); // 30 minutes
+    }
+    
+    document.addEventListener('touchstart', resetTimer);
+    document.addEventListener('click', resetTimer);
+    resetTimer();
+  </script>
+  
+</body>
+</html>
