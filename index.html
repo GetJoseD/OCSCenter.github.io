@@ -21,6 +21,7 @@
       --mpls-gray-medium: #928884;
       --mpls-gray-dark: #7D716D;
       --mpls-orange: #F68628;
+      --mpls-footer-dark: #333333;
       --white: #ffffff;
     }
     
@@ -82,8 +83,10 @@
     }
     
     .logo {
-      height: 80px;
+      height: 90px;
       width: auto;
+      max-width: 280px;
+      object-fit: contain;
     }
     
     .header-text h1 {
@@ -141,15 +144,18 @@
       border-left: 4px solid var(--mpls-light-blue);
     }
     
-    .welcome-section .highlight p {
-      font-size: 20px;
-      margin-bottom: 10px;
-      font-weight: 600;
+    .welcome-section .highlight-header {
+      font-size: 26px;
+      margin-bottom: 12px;
+      font-weight: 700;
       color: var(--mpls-dark-blue);
     }
     
-    .welcome-section .highlight p:last-child {
+    .welcome-section .highlight p {
+      font-size: 20px;
       margin-bottom: 0;
+      font-weight: 400;
+      color: var(--mpls-gray);
     }
     
     /* Resource Links Section */
@@ -226,6 +232,10 @@
       background-color: var(--mpls-orange);
     }
     
+    .resource-card:nth-child(6) {
+      background-color: var(--mpls-gray-dark);
+    }
+    
     .resource-icon {
       font-size: 60px;
       min-width: 80px;
@@ -297,44 +307,110 @@
       font-weight: 600;
     }
     
+    .help-section .note {
+      background-color: #fff8e6;
+      padding: 20px 25px;
+      border-radius: 6px;
+      margin-top: 20px;
+      border-left: 4px solid var(--mpls-orange);
+    }
+    
+    .help-section .note p {
+      margin-bottom: 8px;
+    }
+    
+    .help-section .note p:last-child {
+      margin-bottom: 0;
+    }
+    
     /* Accessibility Section */
     .accessibility-section {
       border-left-color: var(--mpls-orange);
     }
     
     /* ============================================
-       FOOTER
+       FOOTER - MATCHING CITY WEBSITE
        ============================================ */
     .footer {
-      background-color: var(--mpls-gray-dark);
+      background-color: var(--mpls-footer-dark);
       color: var(--white);
-      padding: 40px;
-      text-align: center;
+      padding: 50px 40px 30px 40px;
       margin-top: auto;
     }
     
-    .footer-content h3 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-    
-    .footer-content p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 10px;
-      opacity: 0.95;
+    .footer-main {
+      text-align: center;
+      margin-bottom: 35px;
     }
     
     .footer-logo {
-      margin-top: 25px;
-      opacity: 0.8;
+      margin-bottom: 25px;
     }
     
     .footer-logo img {
-      height: 60px;
-      filter: brightness(0) invert(1);
-      opacity: 0.7;
+      height: 70px;
+      width: auto;
+      max-width: 280px;
+      object-fit: contain;
+    }
+    
+    .footer-main h3 {
+      font-size: 26px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    
+    .footer-main .location-info {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.95);
+    }
+    
+    .footer-main .location-info strong {
+      font-weight: 600;
+      color: var(--white);
+    }
+    
+    .footer-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      margin: 30px 0 25px 0;
+    }
+    
+    .footer-links {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 15px;
+      display: inline-block;
+      padding: 5px 0;
+      transition: color 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+    
+    .footer-links a:hover,
+    .footer-links a:focus {
+      color: var(--mpls-light-blue);
+      border-bottom-color: var(--mpls-light-blue);
+    }
+    
+    .footer-links .separator {
+      color: rgba(255, 255, 255, 0.4);
+      margin: 0 5px;
+    }
+    
+    .footer-copyright {
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 20px;
     }
     
     /* ============================================
@@ -360,6 +436,7 @@
     .resource-card:nth-child(3) { animation-delay: 0.3s; }
     .resource-card:nth-child(4) { animation-delay: 0.4s; }
     .resource-card:nth-child(5) { animation-delay: 0.5s; }
+    .resource-card:nth-child(6) { animation-delay: 0.6s; }
     
     /* ============================================
        RESPONSIVE ADJUSTMENTS
@@ -376,7 +453,8 @@
       }
       
       .logo {
-        height: 60px;
+        height: 70px;
+        max-width: 220px;
       }
       
       .header-text h1 {
@@ -399,6 +477,10 @@
         font-size: 18px;
       }
       
+      .highlight-header {
+        font-size: 22px !important;
+      }
+      
       .section-title {
         font-size: 26px;
       }
@@ -419,6 +501,23 @@
       
       .resource-description {
         font-size: 16px;
+      }
+      
+      .footer {
+        padding: 40px 25px 25px 25px;
+      }
+      
+      .footer-logo img {
+        height: 60px;
+      }
+      
+      .footer-links a {
+        display: block;
+        margin: 10px 0;
+      }
+      
+      .footer-links .separator {
+        display: none;
       }
     }
     
@@ -446,7 +545,7 @@
     <!-- Header -->
     <header class="header">
       <div class="header-content">
-        <img src="whitelogo.png" alt="City of Minneapolis" class="logo">
+        <img src="/files/minneapolis-logo-white.png" alt="City of Minneapolis" class="logo">
         <div class="header-text">
           <h1>Community Safety Center</h1>
           <p>Lake Street Resource Kiosk</p>
@@ -463,7 +562,7 @@
         <p>Use this kiosk to access City of Minneapolis services and community resources. Simply tap on any link below to get started.</p>
         
         <div class="highlight">
-          <p>📍 Need Personal Assistance?</p>
+          <p class="highlight-header">Need Personal Assistance?</p>
           <p>Please speak with a service representative at the counter. They're here to help!</p>
         </div>
       </section>
@@ -524,40 +623,61 @@
             <div class="resource-arrow">→</div>
           </a>
           
+          <!-- Lake Street Safety Center -->
+          <a href="https://www.minneapolismn.gov/government/programs-initiatives/community-safety-centers/lake-st-safety-center/" class="resource-card" target="_blank" rel="noopener">
+            <div class="resource-icon">🏢</div>
+            <div class="resource-content">
+              <div class="resource-title">Lake Street Safety Center</div>
+              <div class="resource-description">Learn about programs, services, and resources at this location</div>
+            </div>
+            <div class="resource-arrow">→</div>
+          </a>
+          
         </div>
       </section>
       
       <!-- Translation Help Section -->
       <section class="help-section">
-        <h3>🌐 Need This Page in Another Language?</h3>
+        <h3>🌍 Need This Page in Another Language?</h3>
         <p>You can translate this page using Microsoft Edge's built-in translation feature:</p>
         <ol>
-          <li>Tap the <strong>three dots (•••)</strong> in the upper right corner of the screen</li>
+          <li>Tap the <strong>hamburger menu button (☰)</strong> with three horizontal lines in the upper right corner</li>
           <li>Tap <strong>"Translate"</strong> from the menu</li>
-          <li>Select your preferred language from the list</li>
-          <li>The page will automatically translate</li>
+          <li>A menu will appear at the top underneath the address bar showing the original language and destination language</li>
+          <li>Tap the language to the right of <strong>"English"</strong></li>
+          <li>Select your preferred language from the dropdown menu</li>
+          <li>The page will automatically regenerate in the selected language</li>
         </ol>
         <p><strong>Common Languages:</strong> Spanish (Español), Somali (Soomaali), Hmong, Karen, Oromo, Vietnamese (Tiếng Việt)</p>
+        
+        <div class="note">
+          <p><strong>📌 Note for minneapolismn.gov visitors:</strong></p>
+          <p>The City of Minneapolis website has pre-translated pages available. When you visit minneapolismn.gov, look for the gray bar at the top of the page. Tap <strong>"Translate"</strong> (next to "Sitemap") and select your language.</p>
+          <p><strong>Important:</strong> The City's pre-translated pages are only available in certain languages. For a wider selection of languages, use the Edge browser's built-in translate tool described above.</p>
+        </div>
       </section>
       
       <!-- Accessibility Help Section -->
       <section class="help-section accessibility-section">
         <h3>♿ Accessibility Options</h3>
-        <p>Make this kiosk easier to use with iPad accessibility features:</p>
+        <p>Make this kiosk easier to use with Microsoft Edge accessibility features:</p>
         
         <p><strong>To Make Text Larger:</strong></p>
         <ol>
-          <li>Triple-click the <strong>Home button</strong> (or Side button on newer iPads)</li>
-          <li>Tap <strong>"Zoom"</strong> to turn it on</li>
-          <li>Use three fingers to zoom in and out</li>
-          <li>Drag with three fingers to move around</li>
+          <li>Tap the <strong>hamburger menu button (☰)</strong> in Edge</li>
+          <li>Tap <strong>"Font size"</strong></li>
+          <li>Use the slider bar to toggle between smaller and larger text sizes</li>
+          <li>Adjust until the text is comfortable to read</li>
         </ol>
         
         <p><strong>To Hear Text Read Aloud:</strong></p>
         <ol>
-          <li>Swipe down with two fingers from the top of the screen</li>
-          <li>Look for <strong>"Speak Screen"</strong> or <strong>"VoiceOver"</strong></li>
-          <li>Tap any text to hear it read aloud</li>
+          <li>Tap the <strong>hamburger menu button (☰)</strong> in Edge</li>
+          <li>Tap <strong>"Read aloud"</strong> from the menu</li>
+          <li>The text will begin reading automatically</li>
+          <li>A toolbar will appear underneath the address bar with controls</li>
+          <li>Use the <strong>pause or play button</strong> to control playback</li>
+          <li>Under <strong>"Voice options"</strong> you can adjust the speed of the voice</li>
         </ol>
         
         <p><strong>For Additional Help:</strong> Please ask a service representative at the counter.</p>
@@ -567,16 +687,46 @@
     
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-content">
-        <h3>Community Safety Center - Lake Street</h3>
-        <p>City of Minneapolis</p>
-        <p>For assistance, please speak with staff at the service counter</p>
-        <p>Emergency: Call 911</p>
-        <p>Non-Emergency: Call 311 or 612-673-3000</p>
-        
+      <div class="footer-main">
         <div class="footer-logo">
-          <img src="whitelogo.png" alt="City of Minneapolis">
+          <img src="/files/minneapolis-logo-white.png" alt="City of Minneapolis">
         </div>
+        
+        <h3>Lake Street Community Safety Center</h3>
+        
+        <div class="location-info">
+          <strong>Address:</strong> 2800 Minnehaha Ave, Minneapolis, MN 55406
+        </div>
+        
+        <div class="location-info">
+          <strong>Hours:</strong> Monday - Friday, 8:00 AM - 4:30 PM
+        </div>
+        
+        <div class="location-info">
+          <strong>Phone:</strong> 612-673-5407
+        </div>
+        
+        <div class="location-info" style="margin-top: 20px;">
+          <strong>Emergency:</strong> Call 911
+        </div>
+        
+        <div class="location-info">
+          <strong>Non-Emergency:</strong> Call 311 or 612-673-3000
+        </div>
+      </div>
+      
+      <hr class="footer-divider">
+      
+      <div class="footer-links">
+        <a href="https://www.minneapolismn.gov/footer-content/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>
+        <span class="separator">|</span>
+        <a href="https://www.minneapolismn.gov/footer-content/terms-of-use/" target="_blank" rel="noopener">Terms of Use</a>
+        <span class="separator">|</span>
+        <a href="https://www.minneapolismn.gov/footer-content/website-accessibility/" target="_blank" rel="noopener">Accessibility</a>
+      </div>
+      
+      <div class="footer-copyright">
+        © 2026 City of Minneapolis
       </div>
     </footer>
     
