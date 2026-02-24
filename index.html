@@ -109,80 +109,26 @@
        ============================================ */
     .main-content {
       flex: 1;
-      padding: 50px 40px;
+      padding: 35px 40px 50px 40px;
       background-color: var(--white);
     }
     
-    /* Welcome Section */
-    .welcome-section {
-      background-color: #f9f9f9;
-      border-left: 6px solid var(--mpls-dark-blue);
-      padding: 35px 40px;
-      margin-bottom: 50px;
-      border-radius: 6px;
-    }
-    
-    .welcome-section h2 {
-      color: var(--mpls-dark-blue);
-      font-size: 36px;
-      margin-bottom: 20px;
-      font-weight: 600;
-    }
-    
-    .welcome-section p {
-      font-size: 22px;
-      line-height: 1.7;
-      color: var(--mpls-gray);
-      margin-bottom: 15px;
-    }
-    
-    .welcome-section .highlight {
-      background-color: #e6f5f9;
-      padding: 25px 30px;
-      border-radius: 6px;
-      margin-top: 25px;
-      border-left: 4px solid var(--mpls-light-blue);
-    }
-    
-    .welcome-section .highlight-header {
-      font-size: 26px;
-      margin-bottom: 12px;
-      font-weight: 700;
-      color: var(--mpls-dark-blue);
-    }
-    
-    .welcome-section .highlight p {
-      font-size: 20px;
-      margin-bottom: 0;
-      font-weight: 400;
-      color: var(--mpls-gray);
-    }
-    
-    /* Resource Links Section */
+    /* Resource Links Section - NO HEADER, buttons first */
     .resources-section {
-      margin-bottom: 50px;
-    }
-    
-    .section-title {
-      color: var(--mpls-dark-blue);
-      font-size: 32px;
-      margin-bottom: 30px;
-      font-weight: 600;
-      padding-bottom: 15px;
-      border-bottom: 3px solid var(--mpls-light-blue);
+      margin-bottom: 40px;
     }
     
     .resource-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 25px;
-      margin-bottom: 40px;
+      gap: 18px;
+      margin-bottom: 0;
     }
     
     .resource-card {
       background-color: var(--mpls-gray);
       color: var(--white);
-      padding: 35px 40px;
+      padding: 28px 35px;
       border-radius: 8px;
       text-decoration: none;
       display: flex;
@@ -190,7 +136,7 @@
       gap: 25px;
       transition: all 0.3s ease;
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-      min-height: 140px;
+      min-height: 119px;
       position: relative;
       overflow: hidden;
     }
@@ -232,13 +178,9 @@
       background-color: var(--mpls-orange);
     }
     
-    .resource-card:nth-child(6) {
-      background-color: var(--mpls-gray-dark);
-    }
-    
     .resource-icon {
-      font-size: 60px;
-      min-width: 80px;
+      font-size: 55px;
+      min-width: 75px;
       text-align: center;
       flex-shrink: 0;
     }
@@ -248,22 +190,67 @@
     }
     
     .resource-title {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       line-height: 1.3;
     }
     
     .resource-description {
-      font-size: 18px;
+      font-size: 17px;
       opacity: 0.95;
-      line-height: 1.5;
+      line-height: 1.4;
     }
     
     .resource-arrow {
-      font-size: 40px;
+      font-size: 38px;
       opacity: 0.8;
       flex-shrink: 0;
+    }
+    
+    /* Welcome Section - NOW AT BOTTOM */
+    .welcome-section {
+      background-color: #f9f9f9;
+      border-left: 6px solid var(--mpls-dark-blue);
+      padding: 35px 40px;
+      margin-bottom: 40px;
+      border-radius: 6px;
+    }
+    
+    .welcome-section h2 {
+      color: var(--mpls-dark-blue);
+      font-size: 36px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .welcome-section p {
+      font-size: 22px;
+      line-height: 1.7;
+      color: var(--mpls-gray);
+      margin-bottom: 15px;
+    }
+    
+    .welcome-section .highlight {
+      background-color: #e6f5f9;
+      padding: 25px 30px;
+      border-radius: 6px;
+      margin-top: 25px;
+      border-left: 4px solid var(--mpls-light-blue);
+    }
+    
+    .welcome-section .highlight-header {
+      font-size: 26px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      color: var(--mpls-dark-blue);
+    }
+    
+    .welcome-section .highlight p {
+      font-size: 20px;
+      margin-bottom: 0;
+      font-weight: 400;
+      color: var(--mpls-gray);
     }
     
     /* ============================================
@@ -436,7 +423,6 @@
     .resource-card:nth-child(3) { animation-delay: 0.3s; }
     .resource-card:nth-child(4) { animation-delay: 0.4s; }
     .resource-card:nth-child(5) { animation-delay: 0.5s; }
-    .resource-card:nth-child(6) { animation-delay: 0.6s; }
     
     /* ============================================
        RESPONSIVE ADJUSTMENTS
@@ -466,7 +452,29 @@
       }
       
       .main-content {
-        padding: 30px 25px;
+        padding: 25px 20px 30px 20px;
+      }
+      
+      .resource-grid {
+        gap: 15px;
+      }
+      
+      .resource-card {
+        padding: 22px 28px;
+        min-height: 100px;
+      }
+      
+      .resource-icon {
+        font-size: 48px;
+        min-width: 65px;
+      }
+      
+      .resource-title {
+        font-size: 22px;
+      }
+      
+      .resource-description {
+        font-size: 15px;
       }
       
       .welcome-section h2 {
@@ -479,28 +487,6 @@
       
       .highlight-header {
         font-size: 22px !important;
-      }
-      
-      .section-title {
-        font-size: 26px;
-      }
-      
-      .resource-card {
-        padding: 25px 30px;
-        min-height: 120px;
-      }
-      
-      .resource-icon {
-        font-size: 50px;
-        min-width: 70px;
-      }
-      
-      .resource-title {
-        font-size: 24px;
-      }
-      
-      .resource-description {
-        font-size: 16px;
       }
       
       .footer {
@@ -556,21 +542,8 @@
     <!-- Main Content -->
     <main class="main-content">
       
-      <!-- Welcome Section -->
-      <section class="welcome-section">
-        <h2>Welcome! How Can We Help You Today?</h2>
-        <p>Use this kiosk to access City of Minneapolis services and community resources. Simply tap on any link below to get started.</p>
-        
-        <div class="highlight">
-          <p class="highlight-header">Need Personal Assistance?</p>
-          <p>Please speak with a service representative at the counter. They're here to help!</p>
-        </div>
-      </section>
-      
-      <!-- Resources Section -->
+      <!-- Resources Section - NO HEADER, buttons immediately displayed -->
       <section class="resources-section">
-        <h2 class="section-title">Community Resources</h2>
-        
         <div class="resource-grid">
           
           <!-- City of Minneapolis -->
@@ -623,16 +596,17 @@
             <div class="resource-arrow">→</div>
           </a>
           
-          <!-- Lake Street Safety Center -->
-          <a href="https://www.minneapolismn.gov/government/programs-initiatives/community-safety-centers/lake-st-safety-center/" class="resource-card" target="_blank" rel="noopener">
-            <div class="resource-icon">🏢</div>
-            <div class="resource-content">
-              <div class="resource-title">Lake Street Safety Center</div>
-              <div class="resource-description">Learn about programs, services, and resources at this location</div>
-            </div>
-            <div class="resource-arrow">→</div>
-          </a>
-          
+        </div>
+      </section>
+      
+      <!-- Welcome Section - MOVED TO BOTTOM -->
+      <section class="welcome-section">
+        <h2>Welcome! How Can We Help You Today?</h2>
+        <p>Use this kiosk to access City of Minneapolis services and community resources. Simply tap on any link above to get started.</p>
+        
+        <div class="highlight">
+          <p class="highlight-header">Need Personal Assistance?</p>
+          <p>Please speak with a service representative at the counter. They're here to help!</p>
         </div>
       </section>
       
