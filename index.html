@@ -610,54 +610,6 @@
         </div>
       </section>
       
-      <!-- Translation Help Section -->
-      <section class="help-section">
-        <h3>🌍 Need This Page in Another Language?</h3>
-        <p>You can translate this page using Microsoft Edge's built-in translation feature:</p>
-        <ol>
-          <li>Tap the <strong>menu button (☰)</strong> with three horizontal lines in the upper right corner</li>
-          <li>Tap <strong>"Translate"</strong> from the menu</li>
-          <li>A menu will appear at the top underneath the address bar showing the original language and destination language</li>
-          <li>Tap the language to the right of <strong>"English"</strong></li>
-          <li>Select your preferred language from the dropdown menu</li>
-          <li>The page will automatically regenerate in the selected language</li>
-        </ol>
-        <p><strong>Common Languages:</strong> Spanish (Español), Somali (Soomaali), Hmong, Karen, Oromo, Vietnamese (Tiếng Việt)</p>
-        
-        <div class="note">
-          <p><strong>📌 Note for minneapolismn.gov websites:</strong></p>
-          <p>The City of Minneapolis website has pre-translated pages available. When you visit any page at minneapolismn.gov, look for the gray bar at the top of the page. Tap <strong>"Translate"</strong> (next to "Sitemap") and select your language.</p>
-          <p><strong>Important:</strong> The City's pre-translated pages are only available in certain languages. For a wider selection of languages, use the browser's built-in translate tool described above.</p>
-        </div>
-      </section>
-      
-      <!-- Accessibility Help Section -->
-      <section class="help-section accessibility-section">
-        <h3>♿ Accessibility Options</h3>
-        <p>Make this kiosk easier to use with Microsoft Edge accessibility features:</p>
-        
-        <p><strong>To Make Text Larger:</strong></p>
-        <ol>
-          <li>Tap the <strong>menu button (☰)</strong> in Edge</li>
-          <li>Tap <strong>"Font size"</strong></li>
-          <li>Use the slider bar to toggle between smaller and larger text sizes</li>
-          <li>Adjust until the text is comfortable to read</li>
-        </ol>
-        
-        <p><strong>To Hear Text Read Aloud:</strong></p>
-        <ol>
-          <li>Tap the <strong>menu button (☰)</strong> in Edge</li>
-          <li>Tap <strong>"Read aloud"</strong> from the menu</li>
-          <li>The text will begin reading automatically</li>
-          <li>A toolbar will appear underneath the address bar with controls</li>
-          <li>Use the <strong>pause or play button</strong> to control playback</li>
-          <li>Under <strong>"Voice options"</strong> you can adjust the speed of the voice</li>
-        </ol>
-        
-        <p><strong>For Additional Help:</strong> Please ask a service representative at the counter.</p>
-      </section>
-      
-    </main>
     
     <!-- Footer -->
     <footer class="footer">
@@ -706,39 +658,6 @@
     
   </div>
   
-  <!-- Prevent context menu on long press -->
-  <script>
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
-    
-    // Prevent text selection
-    document.addEventListener('selectstart', function(e) {
-      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-      }
-    });
-    
-    // Log link clicks (optional - for analytics)
-    document.querySelectorAll('.resource-card').forEach(function(link) {
-      link.addEventListener('click', function() {
-        console.log('Resource accessed:', this.querySelector('.resource-title').textContent);
-      });
-    });
-    
-    // Auto-refresh page after 30 minutes of inactivity (kiosk mode)
-    let inactivityTimer;
-    function resetTimer() {
-      clearTimeout(inactivityTimer);
-      inactivityTimer = setTimeout(function() {
-        window.location.reload();
-      }, 1800000); // 30 minutes
-    }
-    
-    document.addEventListener('touchstart', resetTimer);
-    document.addEventListener('click', resetTimer);
-    resetTimer();
-  </script>
-  
+
 </body>
 </html>
