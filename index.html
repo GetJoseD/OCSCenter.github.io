@@ -224,33 +224,79 @@
       font-weight: 600;
     }
     
-    .welcome-section p {
+    .welcome-section > p {
       font-size: 22px;
       line-height: 1.7;
       color: var(--mpls-gray);
-      margin-bottom: 15px;
+      margin-bottom: 25px;
     }
     
-    .welcome-section .highlight {
+    /* Language Section Styling */
+    .language-header {
       background-color: #e6f5f9;
-      padding: 25px 30px;
+      padding: 20px 25px;
       border-radius: 6px;
-      margin-top: 25px;
+      margin-top: 30px;
       border-left: 4px solid var(--mpls-light-blue);
+      margin-bottom: 20px;
     }
     
-    .welcome-section .highlight-header {
-      font-size: 26px;
-      margin-bottom: 12px;
-      font-weight: 700;
+    .language-header h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      font-weight: 600;
       color: var(--mpls-dark-blue);
     }
     
-    .welcome-section .highlight p {
-      font-size: 20px;
-      margin-bottom: 0;
-      font-weight: 400;
+    .language-header p {
+      font-size: 18px;
+      margin: 0;
       color: var(--mpls-gray);
+    }
+    
+    .language-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .language-block {
+      background-color: #ffffff;
+      border: 2px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 20px 25px;
+      transition: all 0.2s ease;
+    }
+    
+    .language-block:hover {
+      border-color: var(--mpls-light-blue);
+      box-shadow: 0 2px 8px rgba(0, 138, 192, 0.1);
+    }
+    
+    .language-block h3 {
+      font-size: 16px;
+      color: var(--mpls-light-blue);
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .language-block p {
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--mpls-gray);
+      margin-bottom: 8px;
+    }
+    
+    .language-block p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .language-block strong {
+      color: var(--mpls-dark-blue);
+      font-weight: 600;
     }
     
     /* ============================================
@@ -431,6 +477,17 @@
       .resource-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      
+      .language-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .language-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     
     @media (max-width: 768px) {
@@ -477,16 +534,36 @@
         font-size: 15px;
       }
       
+      .welcome-section {
+        padding: 25px 30px;
+      }
+      
       .welcome-section h2 {
         font-size: 28px;
       }
       
-      .welcome-section p {
+      .welcome-section > p {
         font-size: 18px;
       }
       
-      .highlight-header {
-        font-size: 22px !important;
+      .language-header h3 {
+        font-size: 20px;
+      }
+      
+      .language-header p {
+        font-size: 16px;
+      }
+      
+      .language-block {
+        padding: 18px 20px;
+      }
+      
+      .language-block h3 {
+        font-size: 14px;
+      }
+      
+      .language-block p {
+        font-size: 17px;
       }
       
       .footer {
@@ -547,7 +624,7 @@
         <div class="resource-grid">
           
           <!-- City of Minneapolis -->
-          <a href="https://www.minneapolismn.gov/" class="resource-card" target="_blank" rel="noopener">
+          <a href="https://www.minneapolismn.gov/" class="resource-card">
             <div class="resource-icon">🏛️</div>
             <div class="resource-content">
               <div class="resource-title">City of Minneapolis</div>
@@ -557,7 +634,7 @@
           </a>
           
           <!-- United Way 211 -->
-          <a href="https://211unitedway.org/" class="resource-card" target="_blank" rel="noopener">
+          <a href="https://211unitedway.org/" class="resource-card">
             <div class="resource-icon">🤝</div>
             <div class="resource-content">
               <div class="resource-title">United Way - First Call for Help</div>
@@ -567,7 +644,7 @@
           </a>
           
           <!-- United Way Twin Cities -->
-          <a href="https://www.gtcuw.org/get-assistance/211-resource-helpline/" class="resource-card" target="_blank" rel="noopener">
+          <a href="https://www.gtcuw.org/get-assistance/211-resource-helpline/" class="resource-card">
             <div class="resource-icon">📞</div>
             <div class="resource-content">
               <div class="resource-title">211 Resource Helpline</div>
@@ -577,7 +654,7 @@
           </a>
           
           <!-- Metro Transit -->
-          <a href="https://www.metrotransit.org/home" class="resource-card" target="_blank" rel="noopener">
+          <a href="https://www.metrotransit.org/home" class="resource-card">
             <div class="resource-icon">🚌</div>
             <div class="resource-content">
               <div class="resource-title">Metro Transit</div>
@@ -587,7 +664,7 @@
           </a>
           
           <!-- Metro Transit Store -->
-          <a href="https://store.metrotransit.org/" class="resource-card" target="_blank" rel="noopener">
+          <a href="https://store.metrotransit.org/" class="resource-card">
             <div class="resource-icon">🎫</div>
             <div class="resource-content">
               <div class="resource-title">Metro Transit Store</div>
@@ -600,62 +677,65 @@
       </section>
       
       <!-- Welcome Section - MOVED TO BOTTOM -->
-     <br>
-      <br>
       <section class="welcome-section">
         <h2>Need personal assistance?</h2>
         <p>Please speak with a service representative at the counter. They're here to help!</p>
         
-        <div class="highlight">
-          <p class="highlight-header"><body>
-<br>
-  <div class="language-block" lang="es">
-    <h3>Spanish</h3>
-    <p><strong>¿Necesita ayuda personal?</strong></p>
-    <p>Por favor, hable con un representante de servicio en el mostrador. ¡Están aquí para ayudar!</p>
-  </div>
-<br>
-  <div class="language-block" lang="so">
-    <h3>Somali</h3>
-    <p><strong>Ma u baahan tahay caawimaad shaqsiyeed?</strong></p>
-    <p>Fadlan la hadal wakiilka adeegga ee jooga miiska. Waxay halkan u joogaan inay ku caawiyaan!</p>
-  </div>
-<br>
-  <div class="language-block" lang="hmn">
-    <h3>Hmong</h3>
-    <p><strong>Xav tau kev pab tus kheej?</strong></p>
-    <p>Thov nrog ib tus neeg pabcuam tham ntawm lub txee. Lawv nyob ntawm no los pab koj!</p>
-  </div>
-<br>
-  <div class="language-block" lang="vi">
-    <h3>Vietnamese</h3>
-    <p><strong>Bạn cần hỗ trợ trực tiếp?</strong></p>
-    <p>Vui lòng nói chuyện với nhân viên phục vụ tại quầy. Họ ở đây để giúp bạn!</p>
-  </div>
-<br>
-  <div class="language-block" lang="lo">
-    <h3>Lao</h3>
-    <p><strong>ຕ້ອງການການຊ່ວຍເຫຼືອສ່ວນຕົວບໍ?</strong></p>
-    <p>ກະລຸນາເວົ້າກັບພະນັກງານບໍລິການທີ່ເຄົາເຕີ. ພວກເຮົາຢູ່ນີ້ເພື່ອຊ່ວຍທ່ານ!</p>
-  </div>
-<br>
-  <div class="language-block" lang="ko">
-    <h3>Korean</h3>
-    <p><strong>개인 도움이 필요하신가요?</strong></p>
-    <p>카운터에 있는 서비스 담당자에게 말씀해 주세요. 도와드리겠습니다!</p>
-  </div>
-<br>
-  <div class="language-block" lang="zh-Hant">
-    <h3>Chinese (Traditional)</h3>
-    <p><strong>需要個人協助嗎？</strong></p>
-    <p>請在櫃檯與服務人員交談，他們會為您提供協助！</p>
-  </div>
-
-</body></p>
-          <p></p>
+        <!-- Language Header -->
+        <div class="language-header">
+          <h3>🌐 Multilingual Support</h3>
+          <p>We speak your language - Personal assistance available</p>
+        </div>
+        
+        <!-- Language Grid -->
+        <div class="language-grid">
+          
+          <div class="language-block" lang="es">
+            <h3>Spanish / Español</h3>
+            <p><strong>¿Necesita ayuda personal?</strong></p>
+            <p>Por favor, hable con un representante de servicio en el mostrador. ¡Están aquí para ayudar!</p>
+          </div>
+          
+          <div class="language-block" lang="so">
+            <h3>Somali / Soomaali</h3>
+            <p><strong>Ma u baahan tahay caawimaad shaqsiyeed?</strong></p>
+            <p>Fadlan la hadal wakiilka adeegga ee jooga miiska. Waxay halkan u joogaan inay ku caawiyaan!</p>
+          </div>
+          
+          <div class="language-block" lang="hmn">
+            <h3>Hmong / Hmoob</h3>
+            <p><strong>Xav tau kev pab tus kheej?</strong></p>
+            <p>Thov nrog ib tus neeg pabcuam tham ntawm lub txee. Lawv nyob ntawm no los pab koj!</p>
+          </div>
+          
+          <div class="language-block" lang="vi">
+            <h3>Vietnamese / Tiếng Việt</h3>
+            <p><strong>Bạn cần hỗ trợ trực tiếp?</strong></p>
+            <p>Vui lòng nói chuyện với nhân viên phục vụ tại quầy. Họ ở đây để giúp bạn!</p>
+          </div>
+          
+          <div class="language-block" lang="lo">
+            <h3>Lao / ລາວ</h3>
+            <p><strong>ຕ້ອງການການຊ່ວຍເຫຼືອສ່ວນຕົວບໍ?</strong></p>
+            <p>ກະລຸນາເວົ້າກັບພະນັກງານບໍລິການທີ່ເຄົາເຕີ. ພວກເຮົາຢູ່ນີ້ເພື່ອຊ່ວຍທ່ານ!</p>
+          </div>
+          
+          <div class="language-block" lang="ko">
+            <h3>Korean / 한국어</h3>
+            <p><strong>개인 도움이 필요하신가요?</strong></p>
+            <p>카운터에 있는 서비스 담당자에게 말씀해 주세요. 도와드리겠습니다!</p>
+          </div>
+          
+          <div class="language-block" lang="zh-Hant">
+            <h3>Chinese / 中文</h3>
+            <p><strong>需要個人協助嗎？</strong></p>
+            <p>請在櫃檯與服務人員交談，他們會為您提供協助！</p>
+          </div>
+          
         </div>
       </section>
       
+    </main>
     
     <!-- Footer -->
     <footer class="footer">
@@ -690,11 +770,11 @@
       <hr class="footer-divider">
       
       <div class="footer-links">
-        <a href="https://www.minneapolismn.gov/footer-content/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://www.minneapolismn.gov/footer-content/privacy-policy/">Privacy Policy</a>
         <span class="separator">|</span>
-        <a href="https://www.minneapolismn.gov/footer-content/terms-of-use/" target="_blank" rel="noopener">Terms of Use</a>
+        <a href="https://www.minneapolismn.gov/footer-content/terms-of-use/">Terms of Use</a>
         <span class="separator">|</span>
-        <a href="https://www.minneapolismn.gov/footer-content/website-accessibility/" target="_blank" rel="noopener">Accessibility</a>
+        <a href="https://www.minneapolismn.gov/footer-content/website-accessibility/">Accessibility</a>
       </div>
       
       <div class="footer-copyright">
@@ -703,7 +783,6 @@
     </footer>
     
   </div>
-  
 
 </body>
 </html>
