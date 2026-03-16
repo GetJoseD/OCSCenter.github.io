@@ -7,19 +7,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Community Safety Center - City of Minneapolis</title>
 
-  <!-- ============================================================
-       SELF-HEALING CONFIGURATION
-       Edit these values to tune kiosk behavior.
-  ============================================================ -->
-  <script>
-    var KIOSK_CONFIG = {
-      homeURL:       "https://getjosed.github.io/OCSCenter.github.io/",
-      inactivityMs:  3 * 60 * 1000,   // 3 min idle → reload to home
-      warningMs:     30 * 1000,        // show countdown 30 s before reload
-      healthCheckMs: 60 * 1000         // passive health-check interval
-    };
-  </script>
-
   <style>
     /* ============================================
        CITY OF MINNEAPOLIS BRAND COLORS
@@ -242,46 +229,6 @@
     .footer-copyright { text-align: center; font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 20px; }
 
     /* ============================================
-       INACTIVITY WARNING OVERLAY
-    ============================================ */
-    #inactivity-warning {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,0.85);
-      z-index: 9999;
-      align-items: center; justify-content: center;
-      flex-direction: column; gap: 18px;
-      text-align: center; padding: 32px;
-    }
-    #inactivity-warning.visible { display: flex; }
-    #inactivity-countdown { font-size: 4.5rem; font-weight: 700; color: var(--mpls-green); line-height: 1; }
-    #inactivity-warning h2 { color: var(--white); font-size: clamp(1.4rem, 3vw, 2rem); }
-    #inactivity-warning p  { color: rgba(255,255,255,0.82); font-size: 1.1rem; max-width: 420px; }
-    #btn-stay {
-      margin-top: 8px; padding: 16px 40px;
-      background: var(--mpls-dark-blue); color: var(--white);
-      border: none; border-radius: 50px;
-      font-size: 1.1rem; font-family: inherit;
-      cursor: pointer; transition: background .2s;
-    }
-    #btn-stay:hover { background: #006fa0; }
-
-    /* ============================================
-       NETWORK OFFLINE NOTICE
-    ============================================ */
-    #network-notice {
-      display: none;
-      position: fixed; bottom: 20px;
-      left: 50%; transform: translateX(-50%);
-      background: #c0392b; color: white;
-      padding: 12px 28px; border-radius: 50px;
-      font-size: .95rem; font-weight: 600;
-      box-shadow: 0 4px 16px rgba(0,0,0,.3);
-      z-index: 9998; white-space: nowrap;
-    }
-    #network-notice.visible { display: block; }
-
-    /* ============================================
        ANIMATIONS
     ============================================ */
     @keyframes fadeIn {
@@ -322,17 +269,6 @@
 <body>
 <div class="container">
 
-  <!-- Inactivity warning overlay -->
-  <div id="inactivity-warning" role="alertdialog" aria-modal="true" aria-labelledby="iw-heading">
-    <div id="inactivity-countdown" aria-live="polite">30</div>
-    <h2 id="iw-heading">Are you still there?</h2>
-    <p>This kiosk will return to the home screen in a moment to help the next person.</p>
-    <button id="btn-stay" onclick="resetInactivityTimer()">I'm still here — stay on this page</button>
-  </div>
-
-  <!-- Offline notice -->
-  <div id="network-notice">⚠ Network connection lost — reconnecting…</div>
-
   <!-- Header -->
   <header class="header">
     <div class="header-content">
@@ -350,7 +286,7 @@
     <!-- Resource navigation buttons -->
     <section class="resource-grid" aria-label="Online Resources">
 
-      <a class="resource-card" href="https://www.minneapolismn.gov/" target="_blank" rel="noopener">
+      <a class="resource-card" href="https://www.minneapolismn.gov/">
         <div class="resource-icon" aria-hidden="true">🏛️</div>
         <div class="resource-content">
           <div class="resource-title">City of Minneapolis</div>
@@ -359,7 +295,7 @@
         <div class="resource-arrow" aria-hidden="true">→</div>
       </a>
 
-      <a class="resource-card" href="https://211unitedway.org/" target="_blank" rel="noopener">
+      <a class="resource-card" href="https://211unitedway.org/">
         <div class="resource-icon" aria-hidden="true">🤝</div>
         <div class="resource-content">
           <div class="resource-title">United Way — First Call for Help</div>
@@ -368,7 +304,7 @@
         <div class="resource-arrow" aria-hidden="true">→</div>
       </a>
 
-      <a class="resource-card" href="https://www.gtcuw.org/get-assistance/211-resource-helpline/" target="_blank" rel="noopener">
+      <a class="resource-card" href="https://www.gtcuw.org/get-assistance/211-resource-helpline/">
         <div class="resource-icon" aria-hidden="true">📞</div>
         <div class="resource-content">
           <div class="resource-title">211 Resource Helpline</div>
@@ -377,7 +313,7 @@
         <div class="resource-arrow" aria-hidden="true">→</div>
       </a>
 
-      <a class="resource-card" href="https://www.metrotransit.org/home" target="_blank" rel="noopener">
+      <a class="resource-card" href="https://www.metrotransit.org/home">
         <div class="resource-icon" aria-hidden="true">🚌</div>
         <div class="resource-content">
           <div class="resource-title">Metro Transit</div>
@@ -386,7 +322,7 @@
         <div class="resource-arrow" aria-hidden="true">→</div>
       </a>
 
-      <a class="resource-card" href="https://store.metrotransit.org/" target="_blank" rel="noopener">
+      <a class="resource-card" href="https://store.metrotransit.org/">
         <div class="resource-icon" aria-hidden="true">🎫</div>
         <div class="resource-content">
           <div class="resource-title">Metro Transit Store</div>
@@ -476,117 +412,15 @@
     </div>
     <hr class="footer-divider">
     <div class="footer-links">
-      <a href="https://www.minneapolismn.gov/footer-content/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="https://www.minneapolismn.gov/footer-content/privacy-policy/">Privacy Policy</a>
       <span class="separator"> | </span>
-      <a href="https://www.minneapolismn.gov/footer-content/terms-of-use/" target="_blank" rel="noopener">Terms of Use</a>
+      <a href="https://www.minneapolismn.gov/footer-content/terms-of-use/">Terms of Use</a>
       <span class="separator"> | </span>
-      <a href="https://www.minneapolismn.gov/footer-content/website-accessibility/" target="_blank" rel="noopener">Accessibility</a>
+      <a href="https://www.minneapolismn.gov/footer-content/website-accessibility/">Accessibility</a>
     </div>
     <div class="footer-copyright">© 2026 City of Minneapolis</div>
   </footer>
 
 </div><!-- /container -->
-
-
-<!-- ============================================================
-     SELF-HEALING SCRIPTS
-     1. Inactivity timer   — idle → warning overlay → hard reload
-     2. Page visibility    — screen wake / tab focus resets timer
-     3. Network watchdog   — offline banner + reload on reconnect
-     4. Periodic health    — background HEAD fetch every 60 s
-     5. New-tab fallback   — if popup blocked, navigate same-tab
-============================================================ -->
-<script>
-(function () {
-  "use strict";
-
-  var HOME   = KIOSK_CONFIG.homeURL;
-  var IDLE   = KIOSK_CONFIG.inactivityMs;
-  var WARN   = KIOSK_CONFIG.warningMs;
-  var HEALTH = KIOSK_CONFIG.healthCheckMs;
-
-  var overlay     = document.getElementById("inactivity-warning");
-  var countdownEl = document.getElementById("inactivity-countdown");
-  var netNotice   = document.getElementById("network-notice");
-
-  var idleTimer = null, warnTimer = null, countdownInterval = null;
-
-  /* ── Helpers ──────────────────────────────────────────────── */
-  function goHome() { window.location.replace(HOME); }
-
-  function showWarning() {
-    overlay.classList.add("visible");
-    var secs = Math.round(WARN / 1000);
-    countdownEl.textContent = secs;
-    countdownInterval = setInterval(function () {
-      secs -= 1;
-      countdownEl.textContent = secs;
-      if (secs <= 0) { clearInterval(countdownInterval); goHome(); }
-    }, 1000);
-  }
-
-  function hideWarning() {
-    overlay.classList.remove("visible");
-    clearInterval(countdownInterval);
-  }
-
-  /* ── 1. INACTIVITY TIMER ─────────────────────────────────── */
-  window.resetInactivityTimer = function () {
-    clearTimeout(idleTimer);
-    clearTimeout(warnTimer);
-    hideWarning();
-    warnTimer = setTimeout(showWarning, IDLE - WARN);
-    idleTimer = setTimeout(goHome, IDLE);
-  };
-
-  ["mousemove","mousedown","keydown","touchstart","touchmove","scroll","click"]
-    .forEach(function (e) {
-      document.addEventListener(e, window.resetInactivityTimer, { passive: true });
-    });
-
-  window.resetInactivityTimer(); // kick off on load
-
-  /* ── 2. PAGE VISIBILITY ──────────────────────────────────── */
-  document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "visible") window.resetInactivityTimer();
-  });
-
-  /* ── 3. NETWORK WATCHDOG ─────────────────────────────────── */
-  window.addEventListener("offline", function () { netNotice.classList.add("visible"); });
-  window.addEventListener("online",  function () {
-    netNotice.classList.remove("visible");
-    setTimeout(goHome, 3000); // brief pause then reload fresh
-  });
-
-  /* ── 4. PERIODIC HEALTH CHECK ────────────────────────────── */
-  setInterval(function () {
-    var ctrl    = new AbortController();
-    var timeout = setTimeout(function () { ctrl.abort(); }, 10000);
-    fetch(HOME + "?_hc=" + Date.now(), { method: "HEAD", cache: "no-store", signal: ctrl.signal })
-      .then(function (r) {
-        clearTimeout(timeout);
-        if (!r.ok) { console.warn("[Kiosk] Health check non-OK:", r.status); goHome(); }
-      })
-      .catch(function (err) {
-        clearTimeout(timeout);
-        if (err.name !== "AbortError") console.warn("[Kiosk] Health check error:", err.message);
-      });
-  }, HEALTH);
-
-  /* ── 5. NEW-TAB FALLBACK ─────────────────────────────────── */
-  document.querySelectorAll(".resource-card").forEach(function (card) {
-    card.addEventListener("click", function (e) {
-      window.resetInactivityTimer();
-      var url    = card.getAttribute("href");
-      var opened = window.open(url, "_blank", "noopener");
-      if (!opened) { e.preventDefault(); window.location.href = url; }
-    });
-  });
-
-  console.info("[Kiosk] Self-healing active | Home:", HOME,
-    "| Idle:", IDLE/1000 + "s | Warning:", WARN/1000 + "s before reload");
-}());
-</script>
-
 </body>
 </html>
