@@ -196,6 +196,24 @@
     .language-block strong { color: var(--mpls-dark-blue); font-weight: 600; }
 
     /* ============================================
+       NAVIGATION TIP
+    ============================================ */
+    .nav-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background-color: #fff8e6;
+      border: 2px solid var(--mpls-orange);
+      border-radius: 8px;
+      padding: 22px 28px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .nav-tip-icon { font-size: 2rem; flex-shrink: 0; margin-top: 2px; }
+    .nav-tip-text { font-size: 18px; line-height: 1.6; color: var(--mpls-gray); }
+    .nav-tip-text strong { color: var(--mpls-footer-dark); }
+
+    /* ============================================
        FOOTER
     ============================================ */
     .footer {
@@ -332,6 +350,15 @@
       </a>
 
     </section>
+
+    <!-- Navigation tip -->
+    <div class="nav-tip" role="note" aria-label="Navigation tip">
+      <span class="nav-tip-icon" aria-hidden="true">👆</span>
+      <div class="nav-tip-text">
+        <strong>Navigating this kiosk?</strong>
+        Use the <strong>back and forward buttons</strong> in the address bar at the top of the screen — or <strong>swipe in from the left or right edge</strong> of the screen to go back or forward.
+      </div>
+    </div>
 
     <!-- Personal assistance banner -->
     <div class="assistance-banner" role="complementary" aria-label="Personal assistance">
